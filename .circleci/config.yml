@@ -1,31 +1,22 @@
-version: 2.1 
+version: 2.1
 
- 
+jobs:
+  build-and-test:
+    machine:
+      image: ubuntu-2004:current
 
-jobs: 
-
-  build-and-test:  
-
-    machine: 
-
-      image: ubuntu-2004:current 
-
-        
-
-    steps: 
-
-      - checkout 
+    steps:
+      - checkout
 
       - run: make lint
 
-      - run: make deps 
+      - run: make deps
 
-      - run: make test       
+      - run: make test
 
-workflows: 
+      - run: make docker_build
 
-  basic:  
-
-    jobs: 
-
-      - build-and-test 
+workflows:
+  basic:
+    jobs:
+      - build-and-test
