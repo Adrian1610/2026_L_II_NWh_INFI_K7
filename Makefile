@@ -26,4 +26,5 @@ docker_push: docker_build
 .PHONY: test
 
 test:
-	PYTHONPATH=. pytest --verbose -s
+	mkdir -p test-results
+	PYTHONPATH=. pytest --verbose -s --junitxml=test-results/junit.xml
